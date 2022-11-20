@@ -6,15 +6,17 @@ import java.util.List;
 @Component
 public interface IEtudiant {
 
-        List<Etudiant> retrieveAllEtudiant();
+    List<Etudiant> retrieveAllEtudiant();
 
-        Etudiant addEtudiant(Etudiant e);
+    Etudiant addEtudiant(Etudiant e);
 
-       Etudiant updateEtudiant (Etudiant e);
+    Etudiant updateEtudiant (Etudiant e);
 
-        Etudiant retrieveEtudiant (Long idEtudiant);
+    Etudiant retrieveEtudiant (Long idEtudiant);
 
-        void removeEtudiant(Long idEtudiant);
+    void removeEtudiant(Long idEtudiant);
 
-      // Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat, Integer idEquipe);
-    }
+    public void assignEtudiantToDepartement (Long etudiantId, Long departementId) ;
+    public Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Long idContrat, Long idEquipe);
+
+}

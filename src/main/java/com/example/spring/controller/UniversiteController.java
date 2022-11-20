@@ -47,4 +47,8 @@ public class UniversiteController {
         universite.removeUniversite(id);
 
     }
+    @PostMapping("/assignUniversiteToDepartement/{idUniversite}/{idDepartement}")
+    public void assignUniversiteToDepartement(@PathVariable Long idUniversite,@PathVariable Long idDepartement) {
+        universite.assignUniversiteToDepartement(idUniversite,idDepartement);
+    }
 }

@@ -2,6 +2,7 @@ package com.example.spring.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import com.example.spring.entites.Etudiant;
@@ -13,9 +14,10 @@ import java.util.List;
 @Component
 //@AllArgsConstructor
 public class EtudiantController {
-   private final IEtudiant etudiant;
 
-   @GetMapping("/AfficherAllEtudiant")
+    private final IEtudiant etudiant;
+
+    @GetMapping("/AfficherAllEtudiant")
     List<Etudiant> retrieveAllEtudiant() {
 
         return  etudiant.retrieveAllEtudiant();
@@ -45,6 +47,16 @@ public class EtudiantController {
     @DeleteMapping("/supprimerEtudiant/{id}")
     void removeEtudiant (@PathVariable Long id){
         etudiant.removeEtudiant(id);
+
+    }
+    @PostMapping("/add/{etudiantId}/{departementId}")
+    public void assignEtudiantToDepartement(@PathVariable Long etudiantId,@PathVariable Long departementId)
+    {
+        this.etudiant.assignEtudiantToDepartement(etudiantId,departementId);
+    }
+    @PostMapping("/addAndAssignEtud/{idContrat}/{idEquipe}")
+    public Etudiant addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant e,@PathVariable Long idContrat, @PathVariable Long idEquipe) {
+        return this.etudiant.addAndAssignEtudiantToEquipeAndContract(e,idContrat,idEquipe);
 
     }
 }
