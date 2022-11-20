@@ -1,7 +1,11 @@
 package com.example.spring.services;
+import com.example.spring.entites.Universite;
 import com.example.spring.repository.IDepartementRepository;
+import com.example.spring.repository.IUniversiteRepository;
 import lombok.AllArgsConstructor;
 import com.example.spring.entites.Departement;
+
+import java.util.ArrayList;
 import java.util.List;
 import com.example.spring.repository.IEtudiantRepositroy;
 import org.springframework.stereotype.Service;
@@ -32,4 +36,6 @@ public class DepartementService implements  IDepartement{
     public void removeDepartement(Long idDepart) {
         departementRepository.deleteById(idDepart);
     }
+
+    
 }

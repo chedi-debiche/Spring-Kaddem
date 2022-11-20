@@ -25,6 +25,8 @@ public class EtudiantService implements IEtudiant {
     private IContractRepository contractRepository;
     @Autowired
     private IEquipeRepository equipeRepository;
+
+
     @Override
     public List<Etudiant> retrieveAllEtudiant() {
         return (List<Etudiant>) etudiantRepository.findAll();
@@ -42,10 +44,15 @@ public class EtudiantService implements IEtudiant {
         return etudiantRepository.findById(Long.valueOf(idEtudiant)).get();
 
     }
-
     @Override
     public void removeEtudiant(Long idEtudiant) {
         etudiantRepository.deleteById(idEtudiant);
+    }
+
+
+    @Override
+    public Etudiant getEtudiantById(Long id) {
+        return etudiantRepository.findById(id).orElse(null);
     }
 
     @Override

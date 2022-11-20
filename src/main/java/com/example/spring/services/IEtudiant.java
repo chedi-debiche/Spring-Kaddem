@@ -16,6 +16,9 @@ public interface IEtudiant {
 
     void removeEtudiant(Long idEtudiant);
 
+    Etudiant getEtudiantById(Long id);
+
+
     public void assignEtudiantToDepartement (Long etudiantId, Long departementId) ;
     public Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Long idContrat, Long idEquipe);
     List<Etudiant> getEtudiantsByDepartement (Long idDepartement);

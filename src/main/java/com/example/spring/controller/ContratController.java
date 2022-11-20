@@ -1,13 +1,15 @@
 package com.example.spring.controller;
 
-import com.example.spring.entites.Contrat;
+import com.example.spring.repository.IContractRepository;
 import com.example.spring.services.ContractService;
 import com.example.spring.services.EtudiantService;
+import com.example.spring.entites.Contrat;
 import com.example.spring.services.IContrat;
 import com.example.spring.entites.Etudiant;
 import com.example.spring.services.IEtudiant;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,9 +20,12 @@ import java.util.List;
 @Component
 public class ContratController {
 
-      IEtudiant etudiant;
+    ContractService contrat;
+    EtudiantService etudiantService;
 
-      IContrat contrat;
+    //private final IEtudiant etudiant;
+    //private final IContrat contrat;
+
 
     @GetMapping("/AfficherAllContrat")
     List<Contrat> retrieveAllContrat() {
@@ -60,7 +65,7 @@ public class ContratController {
             @PathVariable("idContrat") Long idContrat,
             @PathVariable("idEtudiant") Long idEtudiant){
         Contrat ce = contrat.retrieveContrat(idContrat);
-        Etudiant etudiant = etudiant.getEtudiantById(idEtudiant);
+        Etudiant etudiant = etudiantService.getEtudiantById(idEtudiant);
         return contrat.affectContratToEtudiant(ce, etudiant.getNomE(), etudiant.getPrenomE());
     }
 }
