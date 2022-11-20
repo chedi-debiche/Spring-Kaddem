@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -78,5 +79,11 @@ public class EtudiantService implements IEtudiant {
         return e;
 
 
+    }
+
+    @Override
+    public List<Etudiant> getEtudiantsByDepartement(Long idDepartement) {
+        Departement dep = departementRepository.findById(idDepartement).orElse(null);
+        return new ArrayList<Etudiant>(dep.getEtudiants());
     }
 }

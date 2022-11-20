@@ -14,4 +14,7 @@ public interface IContrat {
     Contrat retrieveContrat (Long idContrat);
 
     void removeContrat(Long idContrat);
+
+    Contrat affectContratToEtudiant (Contrat ce, String nomE,String prenomE);
+
 }

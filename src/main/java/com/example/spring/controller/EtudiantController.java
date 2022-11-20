@@ -15,6 +15,7 @@ import java.util.List;
 //@AllArgsConstructor
 public class EtudiantController {
 
+
     private final IEtudiant etudiant;
 
     @GetMapping("/AfficherAllEtudiant")
@@ -58,5 +59,10 @@ public class EtudiantController {
     public Etudiant addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant e,@PathVariable Long idContrat, @PathVariable Long idEquipe) {
         return this.etudiant.addAndAssignEtudiantToEquipeAndContract(e,idContrat,idEquipe);
 
+    }
+
+    @GetMapping("/etudiant/departement/{idDepart}")
+    List<Etudiant> getEtudiantsByDepartement(@PathVariable Long idDepart){
+        return etudiant.getEtudiantsByDepartement(idDepart);
     }
 }

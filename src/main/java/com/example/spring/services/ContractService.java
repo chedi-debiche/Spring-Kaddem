@@ -4,14 +4,20 @@ import com.example.spring.repository.IContractRepository;
 import lombok.AllArgsConstructor;
 import com.example.spring.entites.Contrat;
 import com.example.spring.repository.IEtudiantRepositroy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
 public class ContractService implements IContrat {
-  private final   IContractRepository contractRepository;
-     @Override
+    @Autowired
+  private   IContractRepository contractRepository;
+    @Autowired
+    private   IEtudiantRepositroy etudiantRepositroy;
+
+    @Override
      public List<Contrat> retrieveAllContrat() {
          return (List<Contrat>) contractRepository.findAll();
      }
@@ -32,6 +38,15 @@ public class ContractService implements IContrat {
     @Override
     public void removeContrat(Long idContrat) {
         contractRepository.deleteById(idContrat);
+    }
+
+    @Override
+    public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE) {
+        Etudiant etudiant = etudiantRepositroy.findEtudiantByprenomE(prenomE);
+        Set<Contrat> contratsEtudiant = etudiant.getContrat();
+        if(contratsEtudiant.size() < 5) ce.setEtudiant(etudiant);
+        return contractRepository.save(ce);
+
     }
 
 }

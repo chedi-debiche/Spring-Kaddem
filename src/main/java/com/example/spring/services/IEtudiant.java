@@ -18,5 +18,7 @@ public interface IEtudiant {
 
     public void assignEtudiantToDepartement (Long etudiantId, Long departementId) ;
     public Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Long idContrat, Long idEquipe);
+    List<Etudiant> getEtudiantsByDepartement (Long idDepartement);
+
 
 }
