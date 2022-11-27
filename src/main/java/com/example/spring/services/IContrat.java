@@ -2,6 +2,8 @@ package com.example.spring.services;
 
 import com.example.spring.entites.Contrat;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
 import java.util.List;
 @Component
 public interface IContrat {
@@ -16,5 +18,11 @@ public interface IContrat {
     void removeContrat(Long idContrat);
 
     Contrat affectContratToEtudiant (Contrat ce, String nomE,String prenomE);
+
+    float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate);
+    List<Contrat> contratBetween2dates(Date startDate, Date endDate);
+
+    Integer nbContratsValides(Date endDate, Date startDate);
+
 
 }

@@ -49,4 +49,9 @@ public class DepartementController {
         departement.removeDepartement(id);
 
     }
+
+    @GetMapping("/departement/universite/{idUniv}")
+    List<Departement> getDepartementsByUniversite(@PathVariable Long idUniv){
+        return departement.retrieveDepartementsByUniversite(idUniv);
+    }
 }

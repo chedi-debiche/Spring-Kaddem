@@ -8,12 +8,17 @@ import com.example.spring.entites.Departement;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.spring.repository.IEtudiantRepositroy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
 public class DepartementService implements  IDepartement{
-   private final IDepartementRepository departementRepository;
+    @Autowired
+    private  IUniversiteRepository universiteRepository;
+    @Autowired
+    private  IDepartementRepository departementRepository;
+
     @Override
      public List<Departement> retrieveAllDepartement() {
        return (List<Departement>) departementRepository.findAll();
@@ -37,5 +42,9 @@ public class DepartementService implements  IDepartement{
         departementRepository.deleteById(idDepart);
     }
 
-    
+    @Override
+    public List<Departement> retrieveDepartementsByUniversite(Long idUniversite) {
+        Universite univ = universiteRepository.findById(idUniversite).orElse(null);
+        return new ArrayList<Departement>(univ.getDepartement());    }
+
 }

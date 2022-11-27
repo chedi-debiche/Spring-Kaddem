@@ -10,9 +10,12 @@ import com.example.spring.services.IEtudiant;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 @RequestMapping("/Contrat")
 @RestController
@@ -68,4 +71,19 @@ public class ContratController {
         Etudiant etudiant = etudiantService.getEtudiantById(idEtudiant);
         return contrat.affectContratToEtudiant(ce, etudiant.getNomE(), etudiant.getPrenomE());
     }
+
+    @GetMapping("/getChiffreAffaireEntreDeuxDate/{start}/{end}")
+    float getChiffreAffaireEntreDeuxDate(@PathVariable("start")@DateTimeFormat(pattern = "yyyy-MM-dd")  Date start, @PathVariable("end") @DateTimeFormat(pattern = "yyyy-MM-dd")  Date end){
+        return contrat.getChiffreAffaireEntreDeuxDate(start,end);
+    }
+    @GetMapping("/contratBetween2dates/{start}/{end}")
+    List<Contrat> contratBetween2dates(@PathVariable("start") @DateTimeFormat(pattern = "yyyy-MM-dd") Date start, @PathVariable("end") @DateTimeFormat(pattern = "yyyy-MM-dd")  Date end){
+        return contrat.contratBetween2dates(start,end);
+    }
+    @GetMapping("/nbrContratsValides/{end}/{start}")
+    Integer nbContratsValides(@PathVariable("end") @DateTimeFormat(pattern = "yyyy-MM-dd") Date end , @PathVariable("start")@DateTimeFormat(pattern = "yyyy-MM-dd")  Date start) {
+        return contrat.nbContratsValides(end,start) ;
+    }
+
+
 }

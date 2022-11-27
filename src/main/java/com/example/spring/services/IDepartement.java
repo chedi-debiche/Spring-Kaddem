@@ -14,4 +14,7 @@ public interface IDepartement {
     Departement retrieveDepartement (Long idDepart);
 
     void removeDepartement(Long idDepart);
+
+    List<Departement> retrieveDepartementsByUniversite(Long idUniversite);
+
 }
