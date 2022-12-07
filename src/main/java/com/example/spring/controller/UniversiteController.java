@@ -12,6 +12,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @Component
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
+
 public class UniversiteController {
     private final IUniversite universite;
 

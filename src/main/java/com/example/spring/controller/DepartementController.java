@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Component
+@CrossOrigin(origins = "http://localhost:4200")
 
 public class DepartementController {
     private final IDepartement departement;

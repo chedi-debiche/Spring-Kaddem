@@ -22,7 +22,7 @@ public class Universite implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name="idUniv")
+   // @Column(name="idUniv")
     private Long idUniv; // Clé primaire
     private String nomUniv;
     @OneToMany(cascade = CascadeType.ALL)
