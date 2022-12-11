@@ -17,25 +17,16 @@ import java.util.Set;
 @Getter
 @Setter
 @Component
-//@Table( name = « Equipe")
-public class Equipe implements Serializable {
+public class Projet implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name="idEquipe")
-    private Long idEquipe; // Clé primaire
-    private String nomEquipe;
+    @Column(name="idProjet")
+    private Long idProjet; // Clé primaire
+    private String nomProjet;
     @Enumerated(EnumType.STRING)//string
-    private Niveau niveau;
+    private TypeP typeProjet;
     @OneToOne
-    private DetailEquipe detailEquipe;
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Etudiant> etudiants;
-    @OneToOne(mappedBy = "projet")
     private Projet projet;
 
-// Constructeur et accesseurs (getters) et mutateurs (setters)
-
-
 }
-

@@ -84,13 +84,11 @@ public class EtudiantService implements IEtudiant {
         //  etudiantServiceImp.add(e);
         etudiantRepository.save(e);
         return e;
-
-
     }
 
     @Override
     public List<Etudiant> getEtudiantsByDepartement(Long idDepartement) {
         Departement dep = departementRepository.findById(idDepartement).orElse(null);
-        return new ArrayList<Etudiant>(dep.getEtudiants());
+        return  new ArrayList<Etudiant>(dep.getEtudiants());
     }
 }
